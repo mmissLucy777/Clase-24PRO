@@ -12,7 +12,7 @@ class Ground{   //clase (plano) para objetos tipo ground
     display(){ //función para mostrar los objetos en pantalla
         var pos = this.body.position;   //objtiene las posiciones x,y del cuerpo y las guarda en la variable pos
         rectMode(CENTER);   //coloca las coordenadas el rectángulo al centro
-        fill(199,63,0);  //cambiar a color café en RGB
+        fill(211, 84, 0);  //pinta de blanco el objeto ground
         rect(pos.x, pos.y, this.width, this.height);    //crea un rectángulo y le pasa las propiedades creadas
 
 

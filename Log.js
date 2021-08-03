@@ -1,27 +1,27 @@
-//clase para los Logs (troncos)
+class Log{//Clase Log para los troncos
+//PROPIEDADES de los objetos
+constructor(x,y,height,angle){  //constructor para inicializar los objetos, recibe parámetros x,y, alto y ángulo del tronco
+    var options = { 'restitution': 0.1, 'friction': 1.0, 'density': 1.0}    //propiedades del motor físico (rebote, fricción y densidad)
+    this.body  = Bodies.rectangle(x,y,20,height, options);   //rectángulo del objeto Bodies (recibe propiedades x,y, alto y opciones del motor físico. El ancho es fijo)
+    this.width = 20;    //ancho fijo del rectángulo
+    this.height = height;   //alto variable recibido de sketch
+    Matter.Body.setAngle(this.body, angle); //asigna el angulo al cuerpo body rectanble
+    World.add(world, this.body); //agrega body y mundo a nuestro Mundo
+}//fin del constructor
 
-class Log {
-    //PROPIEDADES de los objetos
-    constructor(x, y, height, angle){  //constructor para inicializar los objetos, recibiendo como argumentos x,y, ancho y el ángulo
-        var options = {'restitution': 0.8, 'friction': 1.0, 'density': 1.0}    //propiedades de los bodies
-        this.body = Bodies.rectangle(x, y,  20, height, options);    //crea un cuerpo del tipo rectangulo
-        this.width = 20;    //ancho fijo a 20 pixeles
-        this.height = height;   //ancho obtenido de los parámetros pasados en sketch
-        Matter.Body.setAngle(this.body, angle); //establece el angulo del cuerpo al instante
-        World.add(world, this.body);    //agrega el cuerpo al mundo
-    }    
-    //FUNCIONES de los objetos
-    display(){  //función para mostrar los troncos en pantalla
-        var pos = this.body.position;   //obtiene la posición del cuerpo y lo guarda en poss
-        var angle = this.body.angle;    //obtiene el ángulo del cuerpo y lo guarda en angle
-        push();
-        translate(pos.x, pos.y);
-        rotate(angle);
-        rectMode(CENTER);
-        strokeWeight(4);    //grosor del contorno
-        stroke(108,52,131) //color del contorno
-        fill(3,155,229);   //color del tronco
-        rect(0,0, this.width, this.height);
-        pop();
-    }
-}
+//FUNCIONES de los objetos
+display(){  //función para mostrar objetos en pantalla
+    var pos = this.body.position;   //obtiene posiciones x,y del cuerpo y los guarda en pos
+    var angle = this.body.angle;    //obtiene angulo del cuerpo y lo guarda en angle
+    push(); //guarda los angulos de la posición original del objeto
+    translate(pos.x, pos.y);    //realiza translacion del objeto en las posiciones x,y
+    rotate(angle);  //genera rotación en el ángulo objetido del cuerpo
+    rectMode(CENTER);   //coloca los ejes del rectángulo en el centro
+    strokeWeight(4);  //asigna un grosor al contorno del objeto
+    stroke(110, 44, 0);  //pinta de color café obscuro el controno
+    fill(220, 118, 51); //rellena el cuadro de color café claro
+    rect(0,0,this.width, this.height);   //crea un rectángulo 
+    pop();  //regresa los angulos iniciales a los objetos
+
+}//fin de display()
+}//fin class Log

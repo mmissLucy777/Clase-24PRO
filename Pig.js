@@ -1,28 +1,33 @@
-//Clase para los objetos "puerquitos"
+/*
+CLASE Pig, para definir los objetos que representarán los puerquitos del juego
+
+*/
 
 class Pig{
     //PROPIEDADES de los objetos
-    constructor(x, y){   //recibe los parámetros de las posiciones x,y para cada puerquito
-        var options = {'restitution': 0.8, 'friction': 0.3, 'density': 1.0} //opciones de los objetos: rebote, friccion y densidad
-        this.body = Bodies.rectangle(x,y,50,50,options);    //rectangulo del Bodie guardado en this.body
-        this.width = 50;    //ancho de los puerquitos   
-        this.height = 50;   //alto de los puerquitos
-
-        World.add(world, this.body); //agrega el objeto this.body al mundo World
-    }
+    constructor(x,y){  //inicialización de los objetos, reciben los parámetros de x,y provenientes de sketch.js
+        var options = {'restitution': 0.8, 'friction': 0.3, 'density': 1.0 } //propiedades del motor de física a los objetos
+        this.body=Bodies.rectangle(x,y,50,50, options);  //definición del objeto rectánguo de Bodies, de propiedades, x,y,with y heiht fijos, propiedades del motor
+        this.width = 50;
+        this.height = 50;
+        
+        World.add(world, this.body);  //agregar el mundo al cuerpo en nuestro Mundo
+    }//Fin constructor
 
     //FUNCIONES de los objetos
-    display(){  //función para mostrar los objetos en pantalla
-        var pos = this.body.position;   //objtiene la propiedad de las posiciones x,y del body y los asigna a la variable pos
-        var angle = this.body.angle;    //obtiene la propiesdad del ángulo del body y lo asigna a la variable angle
-        push();     //capta y almacena las posiciones de x,y y del ángulo
-        translate(pos.x, pos.y);    //traslación del objeto en las posiciones capturadas x,y
-        rotate(angle);  //rota el ángulo
-        rectMode(CENTER);   //coloca las coordenadas x,y en el centro del rectángulo
-        strokeWeight(4);    //grosor del contorno
-        stroke(255,0,0);    //color del contorno
-        fill(249,70, 149);  //relleno de los puerquitos
-        rect(0,0,this.width, this.height);
-        pop();  //regresa a la configuración original de los objetos
-    }
-}
+    display(){  //función para mostrar en pantalla
+        var pos= this.body.position;    //propiedad de posición al cuerpo, guardad en pos
+        var angle = this.body.angle;    //propiedad de angulo al cuerpo, guardada en angle
+        
+        push(); //toma los ángulos del juego
+        translate(pos.x, pos.y);
+        rotate (angle); //rotar objeto en el ángulo definido arriba
+        rectMode (CENTER);
+        //strokeWeight(4); //grueso del contorno
+        //stroke(250, 82, 179);   //color rosa fuerte del contorno
+        fill(243, 13, 117); //color rosa a los puerquitos
+
+        rect(0,0,this.width, this.height);   //dibujar un rectángulo
+        pop();      //regresa los angulos iniciales a los objetos
+    }//fin display
+}//fin class
